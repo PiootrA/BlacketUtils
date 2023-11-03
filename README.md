@@ -16,3 +16,5 @@ There is not a lot to download for this third-party application to work, all you
 [Tampermonkey](https://www.tampermonkey.net/) (Open the link, go to **DOWNLOAD**, press the one that says **Tampermonkey** [unless you want the beta])
 
 [Blacket Router Util](https://greasyfork.org/en/scripts/478962-blacket-router-util) (Open the link, click green install button, then press install in Tampermonkey)
+
+That's all you need to do! Now go to [the game](https://blacket.org) and login and you should have the script activated.
