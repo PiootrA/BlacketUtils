@@ -12,9 +12,9 @@
 
 
 
-// This isn't my best work this sucks lmao
+// This isn"t my best work this sucks lmao
 (async function() {
-    'use strict';
+    "use strict";
 
     let wait = (ms) => { return new Promise(resolve => setTimeout(resolve, ms)) };
     await wait(1000)
@@ -50,41 +50,41 @@
     }
 
     async function setRouter() {
-        document.querySelectorAll('a[href]').forEach(link => {
+        document.querySelectorAll("a[href]").forEach(link => {
             link.onclick = () => {
                 event.preventDefault();
                 blacket.startLoading();
                 console.log(`Loading ${link.href}...`);
-                blacket.config.path = link.href.split('/')[3];
+                blacket.config.path = link.href.split("/")[3];
                 history.pushState("Loading", "Loading", link.href);
                 document.title = `${blacket.config.path[0].toUpperCase() + blacket.config.path.slice(1)} | ${blacket.config.name}`;
                 fetch(link.href).then(x => {return x.text()}).then(res => {
                     const pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
-                    document.querySelector('body').innerHTML = pattern.exec(res)[1];
-                    for (let i = 0; i < document.querySelectorAll('script').length; i++) {
-                        let scr = document.querySelectorAll('script')[i];
-                        if (scr.src.includes('/lib/js/') && scr.src.includes('/dist/phaser-arcade-physics.min.js') && !scr.src.includes(`/lib/js/${link.href.split('/')[link.href.split('/').length-1]}.js`)) {
+                    document.querySelector("body").innerHTML = pattern.exec(res)[1];
+                    for (let i = 0; i < document.querySelectorAll("script").length; i++) {
+                        let scr = document.querySelectorAll("script")[i];
+                        if (scr.src.includes("/lib/js/") && scr.src.includes("/dist/phaser-arcade-physics.min.js") && !scr.src.includes(`/lib/js/${link.href.split("/")[link.href.split("/").length-1]}.js`)) {
                             new Promise((resolve, reject) => {
-                                const script = document.createElement('script')
+                                const script = document.createElement("script")
                                 script.src = scr.src;
                                 scr.remove();
-                                document.querySelector('head').appendChild(script);
+                                document.querySelector("head").appendChild(script);
                             });
                         }
                     }
                     new Promise((resolve, reject) => {
-                        const script = document.createElement('script')
-                        document.querySelector('head').appendChild(script);
-                        script.src = `/lib/js/${location.pathname.includes('/clans/discover') ? 'clans/discover' : location.pathname == '/clans' ? 'clans/my-clan' : location.pathname.split('/')[location.pathname.split('/').length-1]}.js`;
+                        const script = document.createElement("script")
+                        document.querySelector("head").appendChild(script);
+                        script.src = `/lib/js/${location.pathname.includes("/clans/discover") ? "clans/discover" : location.pathname == "/clans" ? "clans/my-clan" : location.pathname.split("/")[location.pathname.split("/").length-1]}.js`;
                     });
-                    $.getScript('/lib/js/game.js', async function() {
+                    $.getScript("/lib/js/game.js", async function() {
                         console.log(`Successfully routed to ${link.href}`)
-                        if (!location.pathname.includes('/leaderboard')) {
-                            while (document.querySelectorAll('a[href]').length < 10) {
+                        if (!location.pathname.includes("/leaderboard")) {
+                            while (document.querySelectorAll("a[href]").length < 10) {
                                 await wait(10);
                             }
                         } else {
-                            while (document.querySelectorAll('a[href]').length < 30) {
+                            while (document.querySelectorAll("a[href]").length < 30) {
                                 await wait(10);
                             }
                         }
