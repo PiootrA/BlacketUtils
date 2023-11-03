@@ -6,7 +6,7 @@
 // @author       Piotr
 // @icon         https://blacket.org/content/logo.png
 // @grant        none
-// @match        https://blacket.org
+// @match        https://blacket.org/*
 // ==/UserScript==
 
 
