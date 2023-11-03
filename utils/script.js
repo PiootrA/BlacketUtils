@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Blacket Router Util
 // @namespace    https://blacket.org
-// @version      1.0.1
+// @version      1.0.2
 // @description  A router for Blacket to improve loading times with a darker theme included!
 // @author       Piotr
 // @icon         https://blacket.org/content/logo.png
