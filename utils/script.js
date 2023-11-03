@@ -66,6 +66,7 @@
                         if (scr.src.includes('/lib/js/') && scr.src.includes('/dist/phaser-arcade-physics.min.js') && !scr.src.includes(`/lib/js/${link.href.split('/')[link.href.split('/').length-1]}.js`)) {
                             new Promise((resolve, reject) => {
                                 const script = document.createElement('script')
+                                script.src = scr.src;
                                 scr.remove();
                                 document.querySelector('head').appendChild(script);
                             });
@@ -74,7 +75,7 @@
                     new Promise((resolve, reject) => {
                         const script = document.createElement('script')
                         document.querySelector('head').appendChild(script);
-                        script.src = `/lib/js/${location.pathname.includes('/clans/discover') ? 'clans/discover' : location.pathname.split('/')[location.pathname.split('/').length-1]}.js`;
+                        script.src = `/lib/js/${location.pathname.includes('/clans/discover') ? 'clans/discover' : script.src = `/lib/js/${location.pathname == '/clans' ? 'clans/my-clan' : location.pathname.split('/')[location.pathname.split('/').length-1]}.js`;
                     });
                     $.getScript('/lib/js/game.js', async function() {
                         console.log(`Successfully routed to ${link.href}`)
