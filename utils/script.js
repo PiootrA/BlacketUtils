@@ -63,7 +63,7 @@
                     const pattern = /<body[^>]*>((.|[\n\r])*)<\/body>/im;
                     document.querySelector('body').innerHTML = pattern.exec(res)[1];
                     for (let i = 0; i < document.querySelectorAll('script').length; i++) {
-                        scr = document.querySelectorAll('script')[i];
+                        let scr = document.querySelectorAll('script')[i];
                         if (scr.src.includes('/lib/js/') && scr.src.includes('/dist/phaser-arcade-physics.min.js') && !scr.src.includes(`/lib/js/${link.href.split('/')[link.href.split('/').length-1]}.js`)) {
                             new Promise((resolve, reject) => {
                                 const script = document.createElement('script')
