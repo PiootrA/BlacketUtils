@@ -75,7 +75,7 @@
                     new Promise((resolve, reject) => {
                         const script = document.createElement('script')
                         document.querySelector('head').appendChild(script);
-                        script.src = `/lib/js/${location.pathname.includes('/clans/discover') ? 'clans/discover' : script.src = `/lib/js/${location.pathname == '/clans' ? 'clans/my-clan' : location.pathname.split('/')[location.pathname.split('/').length-1]}.js`;
+                        script.src = `/lib/js/${location.pathname.includes('/clans/discover') ? 'clans/discover' : location.pathname == '/clans' ? 'clans/my-clan' : location.pathname.split('/')[location.pathname.split('/').length-1]}.js`;
                     });
                     $.getScript('/lib/js/game.js', async function() {
                         console.log(`Successfully routed to ${link.href}`)
