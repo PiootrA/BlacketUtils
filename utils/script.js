@@ -50,7 +50,6 @@
     }
 
     async function setRouter() {
-        console.log(document.querySelectorAll('a[href]'));
         document.querySelectorAll('a[href]').forEach(link => {
             link.onclick = () => {
                 event.preventDefault();
@@ -82,12 +81,10 @@
                         if (!location.pathname.includes('/leaderboard')) {
                             while (document.querySelectorAll('a[href]').length < 10) {
                                 await wait(10);
-                                console.log("TEST");
                             }
                         } else {
                             while (document.querySelectorAll('a[href]').length < 30) {
                                 await wait(10);
-                                console.log("TEST");
                             }
                         }
                         setRouter();
