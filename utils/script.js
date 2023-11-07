@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         BlacketUtils
 // @namespace    https://blacket.org
-// @version      1.0.0
+// @version      1.0.1
 // @description  A router for Blacket to improve loading times with a darker theme included!
 // @author       Piotr
 // @icon         https://blacket.org/content/logo.png
@@ -7755,5 +7755,26 @@
 			}
 		}
 	}
+
+    let delay = 0;
+    $("#chatBox").on("keypress", function (e) {
+        if (e.which === 13 && !e.shiftKey) {
+            e.preventDefault();
+            if (!$(this).val()) return;
+            if (delay > Date.now()) return;
+            if ($(this).val().replace(/\n/g, "").replace(/ /g, "") == "") return;
+            let message = $("#chatBox").val();
+            if (!blacket.user.perms.includes("use_chat_colors") && !blacket.user.perms.includes("*")) localStorage.removeItem("chatColor");
+            let mentions = Array.from(message.matchAll(/\B@\w+/g)).map(x => x[0]);
+            for (let mention of mentions) {
+                mention = mention.substring(1);
+                let user = Object.values(blacket.chat.cached.users).find(x => x.username.toLowerCase() == mention.toLowerCase());
+                if (user) message = message.replaceAll(`@${mention}`, `<@${user.id}>`);
+            }
+            blacket.sendMessage(blacket.chat.room, localStorage.getItem("chatColor") !== null ? `<${localStorage.getItem("chatColor")}>${message}</${localStorage.getItem("chatColor")}>` : message);
+            $("#chatBox").val("");
+            $("#chatBox").css("height", "2.5vw");
+        }
+    });
 
 })();
